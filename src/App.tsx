@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import logo from './img/logo.png'
 import Card from './components/Card/Card.tsx';
 import { IRoot } from "./types.ts";
 import Popup from './components/Card/Popup/Popup.tsx';
@@ -19,10 +20,42 @@ function App() {
   const [pushedButton, setPushedButton] = useState<string>()
   const [errorPopup, setErrorPopup] = useState<Boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>()
+  const [refreshPrelouder, setRefreshPrelouder] = useState<boolean>(false)
+  const [popupLogo, setPopupLogo] = useState<Boolean>(true)
+
+  const handleTouchStart = (e: TouchEvent) => {
+    const startY = e.touches[0].clientY;
+    const handleTouchMove = (e: TouchEvent) => {
+      const deltaY = e.touches[0].clientY - startY;
+      if (deltaY > 0 && window.scrollY === 0) {
+        console.log("обновление данных")
+        setRefreshPrelouder(true)
+        setIsLoading(true)
+        fetchCards();
+      }
+      document.removeEventListener('touchmove', handleTouchMove);
+    };
+    document.addEventListener('touchmove', handleTouchMove);
+  };
 
   useEffect(() => {
-    fetchCards();
+    document.addEventListener('touchstart', handleTouchStart);
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+    };
   }, []);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      fetchCards();
+      setPopupLogo(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
 
   const fetchCards = async () => {
     setIsLoading(true);
@@ -68,6 +101,8 @@ function App() {
       setErrorMessage('Ошибка при загрузке карт');
     } finally {
       setIsLoading(false);
+      setRefreshPrelouder(false)
+
     }
   };
 
@@ -76,11 +111,20 @@ function App() {
   };
 
   return (
-    <>
+    <>{popupLogo && <div className='popup-logo'>
+      <img className='popup-logo__image' src={logo} alt='Logo BonusMoney' />
+    </div>}
+
       <header className='header'>
         <h1 className='header__title'>Управление картами</h1>
       </header>
       <main className='container'>
+
+        {refreshPrelouder &&
+          <div className='refresh-loader'>
+            <div className="refresh-loader__spinner"></div>
+          </div>}
+
         <ul className='cards-list'>
           {cards.map((card) => (
             <li key={card.company.companyId}>

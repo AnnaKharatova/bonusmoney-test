@@ -21,7 +21,7 @@ body {
   flex-direction: column;
   background-color: #efefef;
 
-  min-width: 250px;
+  min-width: 325px;
   font-family: 'SegoeUIRegular', sans-serif;
 }
 
@@ -82,25 +82,79 @@ body {
   height: 40px;
   border: 4px solid black;
   border-radius: 50%;
-  border-top-color: #efefef; /* Цвет кольца */
-  animation: spin 1.2s linear infinite; /* Анимация вращения */
+  border-top-color: #efefef;
+  /* Цвет кольца */
+  animation: spin 1.2s linear infinite;
+  /* Анимация вращения */
   margin: 10px auto;
 }
 
 .loader__main {
-display: flex;
-justify-content: center;
-flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
 }
 
 .more-button {
   margin: 40px auto;
   display: flex;
   justify-content: center;
-  
+
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.refresh-loader {
+  background-color: #ffffff;
+  position: absolute;
+  top: 14.7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.refresh-loader__spinner {
+  width: 15px;
+  height: 15px;
+  border: 3px solid #3498db;
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 2s linear infinite;
+}
+
+.popup-logo {
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-logo__image {
+  width: 60vw;
+  height: 60vw;
 }
