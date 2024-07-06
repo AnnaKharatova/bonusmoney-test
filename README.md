@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# Проект: BonusMoney
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Технологии
+![React](https://img.shields.io/badge/-React-61daf8?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue?logo=TypeScript&logoColor=black&labelColor=white)
+![Vite]
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Описание  проекта
+Проект написан на ReactJS и TypeScript, c использованием сборщика Vite. 
 
-## Expanding the ESLint configuration
+Реализована загрузка карточек компаний чeрез api, прописан базовый функционал кнопопок, есть прилоудеры при получении данных
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Запуск проекта
 
-- Configure the top-level `parserOptions` property like this:
+Для запуска проекта необходимо выполнить следующие действия:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1. Склонировать проект на ваш компьютер с [Github](https://github.com/AnnaKharatova/GithubSearch.git) с помощью команды:
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+git clone https://github.com/AnnaKharatova/GithubSearch.git
+```
+2. Установить зависимости:
+```
+npm install
+```
+3. Запустить проект:
+```
+npm run dev
+```
+4. Открыть проект в браузере.

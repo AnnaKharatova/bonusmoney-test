@@ -62,7 +62,7 @@
 }
 
 .card__button:hover {
-opacity: 0.5;
+    opacity: 0.5;
 }
 
 .card__icon {
@@ -81,7 +81,7 @@ opacity: 0.5;
 
 .card__more-button:hover {
     opacity: 0.5;
-    }
+}
 
 .card__body-main {
     display: flex;
@@ -89,4 +89,3 @@ opacity: 0.5;
     gap: 10vw;
     border-bottom: 1px solid #efefef;
 }
-

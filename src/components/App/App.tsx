@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import logo from './img/logo.png'
-import Card from './components/Card/Card.tsx';
-import { IRoot } from "./types.ts";
-import Popup from './components/Card/Popup/Popup.tsx';
-import AttentionIcon from './img/exclamation_white.png';
+import logo from './../../img/logo.png'
+import Card from '../Card/Card.tsx';
+import { IRoot } from "../../types.ts";
+import Popup from '../Popup/Popup.tsx';
+import AttentionIcon from './../../img/exclamation_white.png';
 
 interface ResponseData {
   companies: IRoot[];
 }
 
 function App() {
+
+  const BASE_URL = 'http://devapp.bonusmoney.pro/mobileapp/getAllCompanies'
+
   const [cards, setCards] = useState<IRoot[]>([]);
   const [isLoading, setIsLoading] = useState<Boolean>(false);
   const [offset, setOffset] = useState<Number>(0);
@@ -28,7 +31,6 @@ function App() {
     const handleTouchMove = (e: TouchEvent) => {
       const deltaY = e.touches[0].clientY - startY;
       if (deltaY > 0 && window.scrollY === 0) {
-        console.log("обновление данных")
         setRefreshPrelouder(true)
         setIsLoading(true)
         fetchCards();
@@ -47,20 +49,18 @@ function App() {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      fetchCards();
       setPopupLogo(false);
+      fetchCards();
     }, 3000);
-
     return () => {
       clearTimeout(timeoutId);
     };
   }, []);
 
-
   const fetchCards = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://devapp.bonusmoney.pro/mobileapp/getAllCompaniesLong', {
+      const response = await fetch(BASE_URL, {
         method: 'POST',
         headers: {
           'TOKEN': '123',
@@ -75,7 +75,6 @@ function App() {
       if (response.ok) {
         setErrorPopup(false)
         const data: ResponseData = await response.json();
-        console.log(data);
         setCards([...cards, ...data.companies]);
         setOffset(Number(offset) + Number(limit));
       }
@@ -102,7 +101,6 @@ function App() {
     } finally {
       setIsLoading(false);
       setRefreshPrelouder(false)
-
     }
   };
 
@@ -111,15 +109,17 @@ function App() {
   };
 
   return (
-    <>{popupLogo && <div className='popup-logo'>
-      <img className='popup-logo__image' src={logo} alt='Logo BonusMoney' />
-    </div>}
+    <>
+      {popupLogo &&
+        <div className='popup-logo'>
+          <img className='popup-logo__image' src={logo} alt='Logo BonusMoney' />
+        </div>}
 
       <header className='header'>
         <h1 className='header__title'>Управление картами</h1>
       </header>
-      <main className='container'>
 
+      <main className='container'>
         {refreshPrelouder &&
           <div className='refresh-loader'>
             <div className="refresh-loader__spinner"></div>
@@ -147,6 +147,7 @@ function App() {
           <p className='message'>Нет компаний</p>
         )}
       </main>
+
       {openPopup && <Popup setOpenPopup={setOpenPopup}>
         {errorPopup ?
           <div className='popup__attention'>
@@ -159,7 +160,6 @@ function App() {
             <p className='popup__text'>ID компании: {companyId}</p>
           </>}
       </Popup>}
-
     </>
   );
 }

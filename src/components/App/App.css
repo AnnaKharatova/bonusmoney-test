@@ -1,28 +1,24 @@
-@font-face {
-  font-family: 'SegoeUIBold';
-  src: url('./fonts/SegoeUIBold/SegoeUIBold.ttf') format('truetype'),
-    url('./fonts/SegoeUIBold/SegoeUIBold.woff') format('woff'),
-    url('./fonts/SegoeUIBold/SegoeUIBold.eot') format('opentype');
-  font-weight: bold;
-  font-style: normal;
-}
+@import url('../../fonts/fonts');
 
-@font-face {
-  font-family: 'SegoeUIRegular';
-  src: url('./fonts/SegoeUIRegular/SegoeUIRegular.ttf') format('truetype'),
-    url('./fonts/SegoeUIRegular/SegoeUIRegular.woff') format('woff'),
-    url('./fonts/SegoeUIRegular/SegoeUIRegular.eot') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 body {
+  font-family: 'SegoeUIRegular', sans-serif;
+  margin: 0;
   display: flex;
   flex-direction: column;
+  place-items: center;
   background-color: #efefef;
-
   min-width: 325px;
-  font-family: 'SegoeUIRegular', sans-serif;
+  min-height: 100vh;
 }
 
 .header {
@@ -39,7 +35,6 @@ body {
   color: #2688eb;
   font-size: 7vw;
   box-sizing: border-box;
-
 }
 
 .container {
@@ -65,8 +60,8 @@ body {
 }
 
 .popup__image {
-  width: 5vw;
-  height: 5vw;
+  width: 10vw;
+  height: 10vw;
   padding-right: 10px;
 }
 
@@ -83,9 +78,7 @@ body {
   border: 4px solid black;
   border-radius: 50%;
   border-top-color: #efefef;
-  /* Цвет кольца */
   animation: spin 1.2s linear infinite;
-  /* Анимация вращения */
   margin: 10px auto;
 }
 
@@ -100,23 +93,12 @@ body {
   margin: 40px auto;
   display: flex;
   justify-content: center;
-
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 .refresh-loader {
   background-color: #ffffff;
   position: absolute;
-  top: 14.7%;
+  top: 25vw;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;

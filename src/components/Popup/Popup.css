@@ -28,7 +28,6 @@
 .popup__text {
     color: rgb(56, 56, 56);
     padding-top: 4px;
-
 }
 
 .popup__button {
@@ -43,15 +42,16 @@
 .popup__close-button {
     background-color: #fefefe;
     margin: 0 auto;
-    width:8vw;
+    width: 8vw;
     height: 8vw;
     position: absolute;
     top: 80%;
     left: 45%;
     right: 50%;
     font-size: 36px;
-    text-align: center;
     border-radius: 100%;
     padding: 0;
-    padding-bottom: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

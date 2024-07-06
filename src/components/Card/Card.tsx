@@ -1,4 +1,3 @@
-// import { useState, useEffect } from 'react';
 import './Card.css'
 import { IRoot } from "../../types.ts"
 
@@ -10,10 +9,7 @@ interface IProp {
   }
 
 function Card(props: IProp) {
-
     const { card } = props
-    console.log(card)
-
     function clickEyeButton() {
         props.setOpenPopup(true)
         props.setCompanyId(card.company.companyId);

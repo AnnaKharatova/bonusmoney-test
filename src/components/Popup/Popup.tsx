@@ -7,10 +7,10 @@ interface IProps {
   }
 
 function Popup(props: IProps) {
-
     function closePopup() {
         props.setOpenPopup(false)
     }
+    
     return (
         <div className="popup">
             <div className="popup__content">
