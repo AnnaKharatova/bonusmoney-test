@@ -1,9 +1,9 @@
 # Проект: BonusMoney
 
 ## Технологии
-![React](https://img.shields.io/badge/-React-61daf8?logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-blue?logo=TypeScript&logoColor=black&labelColor=white)
-![Vite]
+- React
+- TypeScript
+- Vite
 
 
 ## Описание  проекта
