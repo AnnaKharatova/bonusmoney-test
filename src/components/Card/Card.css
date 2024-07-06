@@ -1,0 +1,92 @@
+.card {
+    border-radius: 30px;
+    width: 90vw;
+    margin: 0 auto;
+    padding: 3vw;
+    box-sizing: border-box;
+    margin-top: 5vw;
+}
+
+.card__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 2vw;
+}
+
+.card__title {
+    margin: 0;
+}
+
+.card__logo {
+    width: 15vw;
+    border-radius: 50%;
+}
+
+.card__body-balls {
+    font-size: 6vw;
+    margin: 2vw 0 0;
+}
+
+.card__body-span {
+    font-size: 4vw;
+}
+
+.card__body-title {
+    font-size: 2vw;
+    margin-bottom: 1vw;
+}
+
+.card__body-value {
+    font-size: 4vw;
+    margin-top: 0;
+    margin-bottom: 2vw;
+}
+
+.card__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vw 0 0 2vw;
+}
+
+.card__button {
+    background-color: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: opacity .4s linear;
+}
+
+.card__button:hover {
+opacity: 0.5;
+}
+
+.card__icon {
+    width: 5vw;
+    height: 5vw;
+}
+
+.card__more-button {
+    text-align: center;
+    border-radius: 12px;
+    height: 6vh;
+    width: 35vw;
+    cursor: pointer;
+    transition: opacity .4s linear;
+}
+
+.card__more-button:hover {
+    opacity: 0.5;
+    }
+
+.card__body-main {
+    display: flex;
+    flex-direction: row;
+    gap: 10vw;
+    border-bottom: 1px solid #efefef;
+}
+
